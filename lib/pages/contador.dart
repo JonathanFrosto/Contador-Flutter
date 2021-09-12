@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hello_world/components/themeswitch.dart';
 import 'package:hello_world/services/darkmode.dart';
 
 class Contador extends StatefulWidget {
@@ -24,26 +25,21 @@ class ContadorState extends State<Contador> {
             home: Scaffold(
                 appBar: AppBar(title: const Text('Contador')),
                 body: GestureDetector(
-                  child: Column(
-                    children: [
-                      Center(
-                        child: Text(
-                          '$counter',
-                          textDirection: TextDirection.rtl,
-                          style: const TextStyle(fontSize: 140),
-                        ),
-                      ),
-                      Center(
-                        child: Switch(
-                          value: DarkModeController.instance.isDarkTheme,
-                          onChanged: (value) {
-                            DarkModeController.instance.changeTheme();
-                          }
-                        ),
-                      )
-                    ]
+                  child: Container(
+                    width: double.infinity,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text(
+                            '$counter',
+                            textDirection: TextDirection.rtl,
+                            style: const TextStyle(fontSize: 140),
+                          ),
+                        ThemeSwitch(),
+                      ]
+                    ),
                   ),
-
                   onTap: () {
                     setState(() {
                       counter++;
@@ -55,7 +51,5 @@ class ContadorState extends State<Contador> {
           );
         }
     );
-
-
   }
 }
